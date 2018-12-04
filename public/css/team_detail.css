@@ -1,0 +1,114 @@
+.team_introduce{
+    margin-top: 30px;
+}
+.team_introduce h3{
+    margin-top: 30px;
+    margin-left: 140px;
+    font-weight: bold;
+    color: #1f2021;
+}
+.team_introduce h4 {
+    margin-top: 30px;
+    margin-left: 140px;
+    font-weight: bold;
+}
+.team_introduce p{
+    margin-top: 40px;
+    line-height: 30px;
+    font-size: 20px;
+    text-indent: 2em;
+}
+
+.people h3{
+    margin-left: 20px;
+}
+
+.img_change{
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: auto;
+}
+.people img:hover{
+    transition-property: all;
+    transition-duration: 1s;
+    transform: scale(1.2);
+}
+
+.people{
+    text-align: center;
+}
+
+.programe_name{
+    display: block;
+    margin-left: 150px!important;
+}
+.p_introduce p{
+    margin-top: 40px;
+    line-height: 20px;
+    font-size: 15px;
+    text-indent: 2em;
+}
+.p_introduce span{
+    display: block;
+    margin-top: 40px;
+    margin-left: 60px;
+    line-height: 20px;
+    font-size: 15px;
+}
+
+/*
+   image change
+*/
+.image{
+    width: 400px;
+    height: 300px;
+    border: 1px solid red;
+    position: relative;
+    float: left;
+    margin: 5px;
+    overflow: hidden;
+}
+.image .image-inner{
+    width: 100%;
+    height: 100%;
+    background-color:#6a6faf;
+    position: absolute;
+//display: none;
+    text-align: center;
+    top: -300px;
+    left: -400px;
+    transition-duration: 1s;
+    transition-property: all;
+}
+.image-innerAfter{
+    background-color:rgba(65, 146, 40, 0.53)!important;
+    top: 0px !important;
+    left: 0px !important;
+}
+.image .image-img{
+    width:100%;
+    height: 100%;
+}
+.image .image-inner h5{
+    color: #2c3e50;
+    font-size: 20px;
+    line-height: 30px;
+    display: block;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.image .image-inner p{
+    color: white;
+}
+
+.image-inner p{
+    line-height: 20px;
+    font-size: 16px;
+    text-align: 2em;
+}
+
+.image-inner a{
+    margin-top: 20px;
+}

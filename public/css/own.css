@@ -1,0 +1,49 @@
+.head{
+    margin-top: 30px!important;
+}
+.person{
+    margin-bottom: 30px;
+}
+.img_change{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+.img_change img:hover{
+    transition-property: all;
+    transition-duration: 0.5s;
+    transform: scale(1.1);
+}
+.person h3{
+    display: block;
+    margin-left: 40px;
+    color: #080821;
+    font-weight: bold;
+}
+.content{
+    font-size: 15px;
+    line-height: 20px;
+    text-indent: 2em;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 40px;
+}
+.other{
+    font-size: 18px;
+    display: block;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+.share{
+    display:block;
+    margin-left: 35px;
+    margin-top: 35px;
+    margin-bottom: 100px;
+}
+.share:hover{
+    background-color: #ffffff!important;
+}
+.every{
+    margin-right: 20px;
+}

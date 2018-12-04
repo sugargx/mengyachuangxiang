@@ -1,0 +1,43 @@
+/*============================================================
+   Contact Us
+============================================================*/
+
+.contact-form .input-field {
+    margin-bottom: 30px;
+}
+
+.contact-form .form-control {
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    border-radius: 0;
+    height: 58px;
+    box-shadow: none;
+}
+
+.contact-form .message .form-control {
+    height: 198px;
+}
+
+.contact-form .form-control::-moz-placeholder {
+    color: #1f2021;
+}
+
+.contact-form #msg-submit {
+    font-size: 13px;
+    padding: 17px 50px;
+}
+
+.contact-details {
+    margin-bottom: 60px;
+    margin-left: 180px;
+}
+.contact-details h2{
+    color: #000;
+}
+.contact-details > p {
+    color: #1f2021;
+    display: block;
+    margin-bottom: 35px;
+    line-height: 25px;
+    font-size: 17px;
+}

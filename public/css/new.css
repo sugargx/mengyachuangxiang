@@ -1,0 +1,52 @@
+#newInfo h1{
+	text-align: center;
+	color: black;
+}
+#timetype{
+	text-align: center;
+}
+#time,#type{
+	font-size: 15px;
+}
+
+#newInfo{
+	width: 100%;
+	min-height: 300px;
+	margin-top: 50px;
+	margin-bottom: 50px; 
+}
+
+#content{
+	width: 80%;
+	margin: auto;
+	text-align: left;
+	text-indent: 2em;
+}
+
+#share{
+	text-align: center;
+}
+
+#share span{
+	font-size: 20px;
+	display: block;
+	line-height: 40px;
+}
+
+#shareWay span{
+	color: white;
+}
+
+#share a{
+	width: 200px;
+	height: 40px;
+	display: inline-block;
+	border: 1px solid rgba(35,35,35,0.1);
+	margin: 20px;
+	border-radius: 20px;
+	background-color: #00c7fc;
+	font-weight: 800;
+}
+#share span:hover{
+	color: black;
+}

@@ -1,0 +1,14 @@
+.introduce{
+    font-size: 20px!important;
+    margin-top: 40px;
+}
+.introduce p{
+    margin-top: 70px;
+    line-height: 25px;
+}
+.row{
+    margin-bottom: 10px;
+}
+.introduce h2{
+    font-weight: bold;
+}

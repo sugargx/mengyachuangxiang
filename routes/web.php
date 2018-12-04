@@ -1,0 +1,129 @@
+<?php
+Route::middleware(['web','AdminLoginCheck'])->group(function (){
+    Route::get('/index', ['as'=>"index",'uses'=>"AdminController@index"]);
+    //管理员信息修改
+    Route::get('/informationReflesh',['as'=>'informationReflesh','uses'=>"AdminController@informationReflesh"]);
+    Route::post('/informationRefleshpost',['as'=>'informationRefleshpost','uses'=>"AdminController@informationRefleshpost"]);
+//成员管理
+    Route::resource('member','MemberController');
+    Route::get('/memberAuditing',['as'=>'memberAuditing','uses'=>"MemberController@memberAuditing"]);
+    Route::get('/memberAuditing/{id}',['as'=>'memberAuditingOK','uses'=>"MemberController@memberAuditingOK"]);
+    Route::get('/memberAuditingNO/{id}',['as'=>'memberAuditingNO','uses'=>"MemberController@memberAuditingNO"]);
+//团队管理
+    Route::resource('team','TeamController');
+    Route::get('/teamAddMember/{id}',['as'=>'teamAddMember','uses'=>'TeamController@teamAddMember']);
+    Route::post('/teamAddMember/{id}',['as'=>'teamAddMemberPost','uses'=>'TeamController@teamAddMemberPost']);
+    Route::get('/teamDelMember/{id}',['as'=>'teamDelMember','uses'=>'TeamController@teamDelMember']);
+
+//首页幻灯片管理
+    Route::resource('ppts','PPTController');
+    Route::get('recommend/{id}','PPTController@recommend');
+
+    //文章管理
+    Route::resource('news','NewsController');
+    Route::get('/newsList',['as'=>'newsList','uses'=>'NewsController@newsList']);
+    Route::get('/newcomment/{id}',['as'=>'newcomment','uses'=>'NewsController@newcomment']);
+    Route::get('/commentpass/{new_id}/{id}/{n}',['as'=>'commentpass','uses'=>'NewsController@commentpass']);
+    //项目管理
+    Route::resource('project','ProjectController');
+    Route::get('/projectEdit/{cmd}/{id}',['as'=>'projectEdit','uses'=>'ProjectController@projectEditStatus']);
+    Route::get('/projectGetByStatus/{status}',['as'=>'projectGetByStatus','uses'=>'ProjectController@projectGetByStatus']);
+    Route::get('/projectAddMember/{id}',['as'=>'projectAddMember','uses'=>'ProjectController@projectAddMember']);
+    Route::post('/projectAddMember/{id}',['as'=>'projectAddMemberPost','uses'=>'ProjectController@projectAddMemberPost']);
+    Route::get('/projectDelMember/{project_id}/{member_id}',['as'=>'projectDelMember','uses'=>'ProjectController@projectDelMember']);
+    //照片墙管理
+    Route::resource('image','ImageController');
+    Route::resource('imageType','ImageTypeController');
+    //职务管理
+    Route::get('/jobManager',['as'=>"jobManager",'uses'=>"AdminController@jobManager"]);
+    Route::post('/jobManager',['as'=>"jobManagerPost",'uses'=>"AdminController@jobManagerPost"]);
+    Route::get('/jobDel/{id}',['as'=>'jobDel','uses'=>'AdminController@jobDel']);
+    //客户留言
+    Route::get('/leaveMessage',['as'=>'leaveMessage','uses'=>'AdminController@leaveMessage']);
+    Route::get('/leaveMessageDel/{id}',['as'=>'leaveMessageDel','uses'=>'AdminController@leaveMessageDel']);
+    //成员技能评估
+    Route::resource('skill','SkillController');
+    Route::get('/memberList',['as'=>'memberList','uses'=>'SkillController@memberList']);
+    Route::get('/skillList/{id}',['as'=>'skillList','uses'=>'SkillController@skillList']);
+});
+Route::get('/logout',['as'=>'logout','uses'=>'AdminController@logout']);
+Route::get('/login',['as'=>"getLogin",'uses'=>"AdminController@getLogin"]);
+Route::post('/login',['as'=>"login",'uses'=>"AdminController@login"]);
+Route::get('/register',['as'=>"getRegister",'uses'=>"AdminController@getRegister"]);
+Route::post('/register',['as'=>"Register",'uses'=>"AdminController@Register"]);
+Route::get('/getImage/{path}/{name}',['as'=>'getImage','uses'=>'AdminController@getImage']);
+
+Route::middleware(['web','UserLoginCheck'])->group(function () {
+    Route::get('/userIndex',['as'=>"userIndex",'uses'=>"UserController@userIndex"]);
+    Route::resource('blog','BlogController');
+    Route::get('/blogList/{id}',['as'=>'blogList','uses'=>'blogController@blogList']);
+    //日志
+    Route::resource('journal','JournalController');
+    Route::get('/journalList/{id}',['as'=>'journalList','uses'=>'journalController@journalList']);
+    Route::get('/journalDel/{id}',['as'=>'journalDel','uses'=>'JournalController@destroy']);
+    //个人设置
+    Route::get('/userEdit',['as'=>"userEdit",'uses'=>"UserController@userEdit"]);
+    Route::post('/userEdit',['as'=>"userEditPost",'uses'=>"UserController@userEditPost"]);
+    Route::get('/passwordEdit',['as'=>"passwordEdit",'uses'=>"UserController@passwordEdit"]);
+    Route::post('/passwordEdit',['as'=>"passwordEditPost",'uses'=>"UserController@passwordEditPost"]);
+    //我的团队
+    Route::get('myTeam',['as'=>'myTeam','uses'=>'UserController@myTeam']);
+    //我的好友
+    Route::get('/friends',['as'=>"friends",'uses'=>"UserController@friends"]);
+    //项目
+    Route::get('/myProject',['as'=>"myProject",'uses'=>"UserController@myProject"]);
+    Route::get('/myProjectfinish',['as'=>"myProjectfinish",'uses'=>"UserController@myProjectfinish"]);
+    Route::get('/myProjectworking',['as'=>"myProjectworking",'uses'=>"UserController@myProjectworking"]);
+    Route::get('/myProjectwaiting',['as'=>"myProjectwating",'uses'=>"UserController@myProjectwaiting"]);
+    Route::get('/myProjectlooking/{id}',['as'=>"myProjectlooking",'uses'=>"UserController@myProjectlooking"]);
+    Route::post('/myProjectlooking/{id}',['as'=>"myProjectlookingPost",'uses'=>"UserController@myProjectlookingPost"]);
+});
+//网站首页
+Route::get('/',['as'=>"homePageIndex",'uses'=>"HomePageController@index"]);
+Route::get('/new/{id}',['as'=>"new",'uses'=>"HomePageController@newShow"]);
+Route::post('new/{id}/comment',['as'=>'new_comment','uses'=>'HomePageController@new_comment']);
+Route::get('/news',['as'=>"news",'uses'=>"HomePageController@news"]);
+Route::get('/contact',['as'=>"contact",'uses'=>"HomePageController@contact"]);
+Route::post('/contact',['as'=>"contactPost",'uses'=>"HomePageController@contactPost"]);
+Route::get('/service',['as'=>"service",'uses'=>"HomePageController@service"]);
+Route::get('/teams',['as'=>"teams",'uses'=>"HomePageController@teams"]);
+Route::get('/team_detail/{id}',['as'=>"team_detail",'uses'=>"HomePageController@team_detail"]);
+Route::get('/project_detail/{id}',['as'=>"project_detail",'uses'=>"HomePageController@project_detail"]);
+Route::get('/own/{id}',['as'=>"own",'uses'=>"HomePageController@own"]);
+Route::get('/own_all',['as'=>"own_all",'uses'=>"HomePageController@own_all"]);
+//yxb tianjia
+//关于我们
+Route::get('/aboutus',['as'=>"aboutus",'uses'=>"HomePageController@aboutus"]);
+//个人展示
+Route::get('/membershow',['as'=>"membershow",'uses'=>"HomePageController@membershow"]);
+Route::post('/membershow',['as'=>'membersearch','uses'=>'HomePageController@memberssearch']);
+//个人细节展示页面
+Route::get('/memberdetail/{id}',['as'=>"memberdetail",'uses'=>"HomePageController@memberdetail"]);
+//项目展示
+Route::get('/projectshow',['as'=>"projectshow",'uses'=>"HomePageController@projectshow"]);
+//个人博客展示
+Route::get('/member_blog/{id}',['as'=>"member_blog",'uses'=>"HomePageController@member_blog"]);
+//个人博客详情展示页面
+Route::get('/member_blogdetail/{id}',['as'=>"member_blogdetail",'uses'=>"HomePageController@member_blogdetail"]);
+//关键词查找博客
+Route::post('/lookfor/{id}',['as'=>"lookfor",'uses'=>"HomePageController@lookfor"]);
+//关键词查找项目
+Route::get('/lookforproject',['as'=>"lookforproject",'uses'=>"HomePageController@lookforproject"]);
+//团队推荐按钮
+Route::get('/team_true/{id}',['as'=>"team_true",'uses'=>"TeamController@team_true"]);
+//团队取消推荐按钮
+Route::get('/team_false/{id}',['as'=>"team_false",'uses'=>"TeamController@team_false"]);
+//团队个人推荐按钮
+Route::get('/member_true/{id}/{team_id}',['as'=>"member_true",'uses'=>"TeamController@member_true"]);
+//团队个人取消推荐按钮
+Route::get('/member_false/{id}/{team_id}',['as'=>"member_false",'uses'=>"TeamController@member_false"]);
+//查看某个团队成员
+Route::get('/teammembershow/{id}',['as'=>"teammembershow",'uses'=>"HomePageController@teammembershow"]);
+//动态新闻推荐按钮
+Route::get('/news_true/{id}',['as'=>"news_true",'uses'=>"NewsController@news_true"]);
+//动态新闻取消推荐按钮
+Route::get('/news_false/{id}',['as'=>"news_false",'uses'=>"NewsController@news_false"]);
+
+//博客评论模块
+Route::get('/blogcommit/{id}',['as'=>"blogcommit",'uses'=>"HomePageController@blogcommit"]);
+
